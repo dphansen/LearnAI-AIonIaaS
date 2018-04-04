@@ -1,8 +1,4 @@
-<img style="float: right;" src="./assets/solutions-microsoft-logo-small.png">
-
-# Using Azure IaaS and PaaS for AI workloads
-
-## Microsoft Cloud and AI
+# Welcome
 
 Welcome to this one day workshop on using Azure IaaS and PaaS for AI workloads. 
 In these two days, we will focus on hands-on activities that develop proficiency in AI-oriented workflows leveraging 
@@ -23,8 +19,7 @@ Pre-requisites can be found [here][prereq3.0]. Briefly, pre-requisites include t
 
 - Python
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/aml-logo.png">Goals:</p>
-
+## Goals (keeping just to note format)
 
 - Understand and use the Team Data Science Process (TDSP) to clearly define business goals and success criteria
 - Use a code-repository system with the Azure Machine Learning Workbench using the TDSP structure
@@ -39,7 +34,7 @@ Pre-requisites can be found [here][prereq3.0]. Briefly, pre-requisites include t
 - Deploy and Consume a scoring service on Azure Container Service
 - Collect and Analyze data from a scoring service in production to progress the data science lifecycle.
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/aml-logo.png">Agenda:</p>
+# Agenda
 
 Please note: This is a rough agenda, and the schedule is subject to change pending class activities and interaction.
 
@@ -62,10 +57,11 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
   d.	Security : Controlling access to data sets
 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/aml-logo.png">Discussion Forum:</p>
-TODO
+# Discussion Forum
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/aml-logo.png">Software Dependencies:</p>
+Include?
+
+# Software Dependencies
 
 These materials have been tested on Windows with:
 
