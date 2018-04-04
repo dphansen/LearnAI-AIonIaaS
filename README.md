@@ -1,29 +1,25 @@
 # Welcome
 
-Welcome to the second two days of the Cloud AI Bootcamp. In these two days, we will focus on hands-on activities that develop proficiency in AI-oriented workflows leveraging Azure Machine Learning Workbench and Services, the Team Data Science Process, Visual Studio Team Services, and Azure Container Services. These labs assume a introductory to intermediate knowledge of these services, and if this is not the case, then you should spend the time working through the pre-requisites.
+Welcome to this one day workshop on using Azure IaaS and PaaS for AI workloads. 
+In these two days, we will focus on hands-on activities that develop proficiency in AI-oriented workflows leveraging 
+the Data Science Virtual Machine and other Azure offerings. 
+These labs assume a introductory to intermediate knowledge of these services, and if this is not the case, then you should spend the 
+time working through the pre-requisites.
 
-# Pre-requisites
+## Pre-requisites
 
 Pre-requisites can be found [here][prereq3.0]. Briefly, pre-requisites include the following:
 
-## Resources
+### Resources
 
 - The ability to create resources within an Azure subscription
 - Familiarity with how to create resources in said subscription
 
-## Azure Machine Learning Services
-
-- Python Proficiency and familiarity with data science workloads and techniques.
-
-## Version Control
-
-- Familiarity with [Git](https://git-scm.com/) and a [Visual Studio Team Services Account](https://azure.microsoft.com/en-us/services/visual-studio-team-services/) to leverage collaborative features of Azure Machine Learning.
-
-## Languages
+### Languages
 
 - Python
 
-# Goals
+## Goals (keeping just to note format)
 
 - Understand and use the Team Data Science Process (TDSP) to clearly define business goals and success criteria
 - Use a code-repository system with the Azure Machine Learning Workbench using the TDSP structure
@@ -42,36 +38,35 @@ Pre-requisites can be found [here][prereq3.0]. Briefly, pre-requisites include t
 
 Please note: This is a rough agenda, and the schedule is subject to change pending class activities and interaction.
 
-- Day 1
-  - 9-11: Introduction and Context
-  - 10-11: [Lab 3.1: Introduction to Team Data Science Process with Azure Machine Learning][lab3.1] 
-  - 11-12: [Lab 3.2: Comparing and Managing Models with Azure Machine Learning][lab3.2]
-  - 12-1: Lunch
-  - 1-2:20 [Lab 3.3: Behind the scenes: Docker images and Conda environments][lab3.3]
-  - 2:30-3:50 [Lab 3.4: Executing a data engineering or model training workflow in a remote execution environment][lab3.4]
-  - 4-5: Summary and White-board Discussion
-- Day 2 
-  - 9-9:20: Review and Next Steps
-  - 9:20-10:20: [Lab 3.5: Executing a neural network workflow remotely using GPUs][lab3.5] 
-  - 10:30-10:50: Introduction to Deployment and Context
-  - 11-12:00: [Lab 4.1: Managing Models using Azure Machine Learning][lab4.1]
-  - 12:00-1: Lunch
-  - 1:00-1:50: [Lab 4.2: Deploying a scoring service to Azure Container Service (AKS)][lab4.2]
-  - 2:00-2:50: [Lab 4.3: Consuming the final service][lab4.3]
-  - 3:00-3:50: [Lab 4.4: Collect data from a scoring service][lab4.4]
-  - 4:00-5:00: Q&A and Feedback for Pro AI Bootcamp
+1.	Data Acquisition and exploration:
+  a.	Accessing data from different data sources (like Blobs, Azure File Shares, SQL DB/DW, CosmosDB, Spark, Data Lake, to/from local machine) from the DSVM
+  b.	Data exploration and pre-processing using Python, PySpark, R
+2.	Modeling:
+  a.	Building Deep learning models locally on the GPU instances of DSVM, scaling out training on BatchAI
+  b.	Building Spark MLLib/MMLSpark locally for development, scaling out on aztk (and possibly Databricks that is the focus going forward compared to HDI). 
+3.	Deploying models:
+  a.	AzureML Container/Kubernetes  based deployment (Realtime now, Batch coming soon) – Maybe a pointer to existing AzureML material 
+  b.	Deploying DL/Spark models for batch scoring on aztk/BatchAI/Databricks
+  c.	Deploying models on Tensorflow Serving
+  d.	Other ways to deploy models – Natively on DSVM (for small data) using Flask etc, Azure Functions, App Services
+  e.	Future ONNX Model export and deployment (TBD)
+4.	Enterprise features: (We recently worked on this in the DSVM team and planning to some documentation/scripts in a couple of weeks)
+  a.	Single Signon with Active Directory domain join
+  b.	VM Scale Sets for scaling team’s DSVM Pool 
+  c.	Using Managed Service identity (MSI) for access to resources without embedding credentials
+  d.	Security : Controlling access to data sets
 
 
 # Discussion Forum
 
-We will also use a gitter forum for discussion. Please post comments and questions [here][gitter].
+Include?
 
 # Software Dependencies
 
 These materials have been tested on Windows with:
 
-- Docker Community Edition v`17.12.0-ce-win47 (15139)`
-- Azure Machine Learning Workbench v`0.1.1712.18263`
+- DSVM version?
+- AML deployment version? if using?
 
 [prereq3.0]: https://aka.ms/learnai-proaidevbootcamp-03-0
 [lab3.1]: https://aka.ms/learnai-proaidevbootcamp-03-1
