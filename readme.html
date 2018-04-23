@@ -1,0 +1,80 @@
+<p><img src="notebooks/assets/solutions-microsoft-logo-small.png" /> <img src="notebooks/assets/ai.jpg" style="height:200px;float:right;vertical-align:text-top"></p>
+<h2 id="artificial-intelligence-on-iaas">Artificial Intelligence on IaaS++</h2>
+<h4 id="from-the-microsoft-cloud-and-ai-team">From the Microsoft Cloud and AI Team</h4>
+<p>This workshop leads you through a series of <a href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html">Jupyter Notebooks</a> that explain how to use the Microsoft Azure Data Science Virtual Machine (DSVM) and the Team Data Science Process (TDSP) to create Data Science and AI solutions. These solutions can be deployed in a variety of ways, leveraging Infrastructure-as-a-Service (IaaS) through Platform-as-a-Service (PaaS) environments, and a mixture of both based on requirements.</p>
+<p>The material for this workshop is intended for a Data Scientist familiar with Machine Learning, Python and R programming, Artificial Intelligence application development, and a professional backgound in team software development with methodologies such as Agile. <a href="https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md">If any of these topics are new to you, we have a learning path here that you can follow to bring you up to speed before you start this workshop</a>.</p>
+<p style="border-bottom: 3px solid lightgrey;">
+</p>
+<h3 id="prepare-the-project---system-setup-and-configuration">Prepare The Project - System Setup and Configuration</h3>
+<p>The following labs will guide you through setting up an account, a DSVM, and the Azure Machine Learning workspaces and other elements to create your solution. You'll also download the Project Plan for your solution for your team.</p>
+<p><img src="notebooks/assets/dothings.jpg" style="height:100px;float:right;vertical-align:text-top"></p>
+<p>In Phase One of this Workshop, you'll learn more about how to discover the questions that need an answer, information about the data sources you require, a determination of the algorithms and other parts of an experiment, creating a trained model, operationalizing the solution so that a customer can access it, and how to close out the project with the customer along with any model retraining that is needed. Before you begin these phases, you'll need to set up your environment to perform each of these steps.</p>
+<p style="border-bottom: 3px solid lightgrey;">
+</p>
+<h3 id="lab-0.0---set-up-an-microsoft-azure-account">Lab 0.0 - Set up an Microsoft Azure Account</h3>
+<p><img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top"></p>
+<p>You have four choices for setting up a Microsoft Azure account:</p>
+<ol style="list-style-type: decimal">
+<li>You can use a Free Subscription - <a href="https://azure.microsoft.com/en-us/free/">The process for setting that up is here</a></li>
+<li>You can use a Microsoft Developer Network (MSDN) account - <a href="https://azure.microsoft.com/en-us/pricing/member-offers/credit-for-visual-studio-subscribers/">The process for setting that up is here</a></li>
+<li>You can use a Corporate account - See your corporate person in charge of Azure accounts to see if you are able to create a Virtual Machine and other assets on your company subscription</li>
+<li>Your training class environment may provide an Azure Account login for you - Ask your training instructor for instructions for a login</li>
+</ol>
+<p><em>Once you have an Azure account login, open the Microsoft Azure Portal and continue to the next lab.</em></p>
+<p style="border-bottom: 3px solid lightgrey;">
+</p>
+<h3 id="lab-0.1---set-up-the-azure-data-science-virtual-machine">Lab 0.1 - Set up the Azure Data Science Virtual Machine</h3>
+<p><img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top"></p>
+<p>&lt;TODO: Check this to ensure it's what works&gt;</p>
+<p>Instructions: 1. <a href="https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/provision-deep-learning-dsvm">Open this page</a> and perform the steps to set up a <strong>Linux</strong> DSVM, with a <strong>Password</strong> rather than an SSH set of Keys. 2. Follow the instructions for that section, choosing <strong>DS3 v2</strong> as the size of the DSVM 3. Complete the creation of the DSVM, and note the name, connection information and password for your system.</p>
+<p style="border-bottom: 3px solid lightgrey;">
+</p>
+<h3 id="lab-0.2---log-in-to-the-dsvm-and-update-the-system">Lab 0.2 - Log in to the DSVM and Update the System</h3>
+<p><img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top"></p>
+<p>&lt;TODO: Change to Linux&gt;</p>
+<p>Instructions: 1. Using the Remote Desktop Protocol (RDP) client of your choice, connect to your DSVM using the information from the previous lab. 2. Using Windows Update, <a href="https://support.microsoft.com/en-us/help/3067639/how-to-get-an-update-through-windows-update">update all Windows components</a>. Ensure you set the update options to “Get updates for other Microsoft products” on the Windows Update home page. To enable checking for other products, click the <strong><em>Find Out More</em></strong> option shown beside this message. This will take you to the Microsoft Update site for some quick installation steps. You only need to do this once. Thereafter, the Windows Update home page will indicate that you receive updates “For Windows and other products from Microsoft Update”.</p>
+<h4 id="lab-verification">Lab verification</h4>
+<p>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Restart your DSVM and log in.
+</p>
+<p style="border-bottom: 3px solid lightgrey;">
+</p>
+<h3 id="lab-0.3---create-a-workspace">Lab 0.3 - Create a Workspace</h3>
+<p>&lt;TODO: Change to Linux&gt;</p>
+<p><img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top"></p>
+<p>Instructions: 1. <a href="https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation">Open this reference and follow the steps you see there, stopping at the section marked &quot;Create a project in Workbench&quot;</a></p>
+<h4 id="lab-verification-1">Lab verification</h4>
+<p>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Open the Azure Machine Learning Workbench and connect to your Workspace.
+</p>
+<p style="border-bottom: 3px solid lightgrey;">
+</p>
+<h3 id="lab-0.4---clone-the-workshops-jupyter-notebooks">Lab 0.4 - Clone the Workshop's Jupyter Notebooks</h3>
+<p>&lt;TODO: Change to Linux&gt;</p>
+<p><img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top"></p>
+<p>Instructions: 1. Log in to your Data Science Virtual Machine with the following command from your local workstation, using CMD, PuTTY or a bash-shell prompt:</p>
+<p><code>thing</code></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Make a directory for the Workshop with the following command:</li>
+</ol>
+<p><code>thing</code></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Change to that directory with the following command:</li>
+</ol>
+<p><code>thing</code></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Clone the repository using git commands:</li>
+</ol>
+<p><code>thing</code></p>
+<h4 id="lab-verification-2">Lab verification</h4>
+<p>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Enter the following commands to ensure you have the Notebook files:
+</p>
+<p><code>thing</code></p>
+<p style="border-bottom: 3px solid lightgrey;">
+</p>
+<p>You're now ready to continue on to the introduction Jupyter Notebook. Connect to it on your local brwoser using the following URL, replacing the IP Address with the IP Address (or DNS name) of your Linux DSVM, which you can find in the Azure Portal:</p>
+<p><code>https://1.1.1.1:8000</code></p>
+<p>You may get a security warning, since your DSVM is not set up with a signed certificate, but as long as you verify you are connecting to your DSVM's address, you may continue to your site.</p>
+<p>Log in with the name and password you set for your Linux DSVM.</p>
+<p><strong>NOTE: Continuing to a system that is not yours by bypassing thebrowser's security warning is highly dangerous, and you should exit that screen immediately if the IP address is not correct. Carefully verify that you are accessing the correct site!</strong></p>

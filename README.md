@@ -1,86 +1,159 @@
-<img style="float: right;" src="./assets/solutions-microsoft-logo-small.png">
+![](notebooks/assets/solutions-microsoft-logo-small.png)
+<img src="notebooks/assets/ai.jpg" style="height:200px;float:right;vertical-align:text-top">
 
-# Using Azure IaaS and PaaS for AI workloads
+**Course Design Notes - remove after course Charlie-Lock:**
 
-## Microsoft Cloud and AI
+  -  Useful
+  -  High Production Value
+  -  Deep Learning with GPU (Keras often just knows, package dependency for TensorFlow - Check)
+  -  Scale-out
+  -  Deploy to IoT
+  -  Supporting material can be found here: https://gallery.azure.ai/Collection/Predictive-Maintenance-Template-3 
+  
+**TODO:**
+  - Convert lab notebooks to these notebooks *(complete)*
+  - Change readme.md file to have the pre-reqs *(complete, now testing)*
+  - Convert experiment to Linux DSVM
+  - Convert tensorflow code to GPU-enabled
+  - Include IoT as target
+  - Deploy and test
+  - Find/create location for data source files
+  - Edit/check pre-reqs and setup - attribute the original
+  - If the "Answer Key" is needed, make it, if not, remove reference in the first notebook.
+  - Clean up files and directories for consistency, layout, person, and tense
 
-Welcome to this one day workshop on using Azure IaaS and PaaS for AI workloads. 
-In these two days, we will focus on hands-on activities that develop proficiency in AI-oriented workflows leveraging 
-the Data Science Virtual Machine and other Azure offerings. 
-These labs assume a introductory to intermediate knowledge of these services, and if this is not the case, then you should spend the 
-time working through the pre-requisites.
+## Artificial Intelligence on IaaS++
 
-## Pre-requisites
+#### From the Microsoft Cloud and AI Team
 
-Pre-requisites can be found [here][prereq3.0]. Briefly, pre-requisites include the following:
+This workshop leads you through a series of [Jupyter Notebooks](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html) that explain how to use the Microsoft Azure Data Science Virtual Machine (DSVM) and the Team Data Science Process (TDSP) to create Data Science and AI solutions. These solutions can be deployed in a variety of ways, leveraging Infrastructure-as-a-Service (IaaS) through Platform-as-a-Service (PaaS) environments, and a mixture of both based on requirements. 
 
-### Resources
+The material for this workshop is intended for a Data Scientist familiar with Machine Learning, Python and R programming, Artificial Intelligence application development, and a professional backgound in team software development with methodologies such as Agile. [If any of these topics are new to you, we have a learning path here that you can follow to bring you up to speed before you start this workshop](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
-- The ability to create resources within an Azure subscription
-- Familiarity with how to create resources in said subscription
+*This material draws from a [previous example](https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance), which draws from [yet another example](https://gallery.azure.ai/Collection/Predictive-Maintenance-Template-3).* 
+    
+<p style="border-bottom: 3px solid lightgrey;"></p>
 
-### Languages
+### Prepare The Project - System Setup and Configuration
 
-- Python
+The following labs will guide you through setting up an account, a DSVM, and the Azure Machine Learning workspaces and other elements needed to create your solution. You'll also download the Project Plan for your solution for your team. 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/aml-logo.png">Goals:</p>
+<img src="notebooks/assets/dothings.jpg" style="height:100px;float:right;vertical-align:text-top">
+
+In Phase One of this Workshop, you'll learn more about how to discover the questions that need an answer, information about the data sources you require, a determination of the algorithms and other parts of an experiment, creating a trained model, operationalizing the solution so that a customer can access it, and how to close out the project with the customer along with any model retraining that is needed. Before you begin these phases, you'll need to set up your environment to perform each of these steps. 
+
+<p style="border-bottom: 3px solid lightgrey;"></p>
+
+### Lab 0.0 - Set up an Microsoft Azure Account
+
+<img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
+
+For experimentation and model management, we'll use the Microsoft Azure platform. There are four choices for setting up a Microsoft Azure account:
+
+1. You can use a Free Subscription - [The process for setting that up is here](https://azure.microsoft.com/en-us/free/)
+2. You can use a Microsoft Developer Network (MSDN) account - [The process for setting that up is here](https://azure.microsoft.com/en-us/pricing/member-offers/credit-for-visual-studio-subscribers/)
+3. You can use a Corporate account - See your corporate person in charge of Azure accounts to see if you are able to create a Virtual Machine and other assets on your company subscription
+4. If you are taking this workshop in an on-premises training class, your trainer  may provide an Azure Account login for you - Ask your training instructor for instructions for a login
+
+*Once you have an Azure account login, open the Microsoft Azure Portal and continue to the next lab.*
+
+<p style="border-bottom: 3px solid lightgrey;"></p>
+
+### Lab 0.1  - Set up the Azure Data Science Virtual Machine
+
+<img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
+
+Instructions:
+1. [Open this page](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/provision-deep-learning-dsvm) and perform the steps to set up a **Linux** DSVM, with a **Password** rather than an SSH set of Keys.
+2. Follow the instructions for that section, choosing **NC6 Standard** as the size of the DSVM
+3. Complete the creation of the DSVM, and note the name, connection information and password for your system.
+
+*(Note: You do not need to configure an X2Go client unless you want to - it is not required for the course)*
+
+<p style="border-bottom: 3px solid lightgrey;"></p>
+
+### Lab 0.2 - Log in to the DSVM and Update the System
+
+<img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
+
+< TODO: Change to Linux >
+
+Instructions:
+1. On your local system, open CMD on Windows or a Terminal Window on Linux. 
+2. Type the following commands:
+
+`sudo apt-get update`
+
+(You will be prompted for the password you set in the Portal when you created the VM)
+
+`sudo apt-get upgrade`
+
+Allow the process to complete.
+
+#### Lab verification
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Restart your DSVM and log in.</p> 
+ 
+<p style="border-bottom: 3px solid lightgrey;"></p>
+
+### Lab 0.3 - Create a Workspace
+
+< TODO: Change to Linux >
+
+<img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
+
+Instructions:
+1.  [Open this reference and follow the steps you see there, stopping at the section marked "Create a project in Workbench"](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation) 
+
+#### Lab verification
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Open the Azure Machine Learning Workbench and connect to your Workspace.</p> 
+ 
+<p style="border-bottom: 3px solid lightgrey;"></p>
+
+### Lab 0.4 - Clone the Workshop's Jupyter Notebooks
+
+< TODO: Change to Linux >
+
+<img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
+
+Instructions:
+1.   Log in to your Data Science Virtual Machine with the following command from your local workstation, using CMD, PuTTY or a bash-shell prompt:
+
+`thing`
+
+2. Make a directory for the Workshop with the following command:
+
+`mkdir ~/gpu`
+
+3. Change to that directory with the following command:
+
+`cd ~/gpu`
+
+4. Clone the repository using git commands:
+
+`git clone http://`
 
 
-- Understand and use the Team Data Science Process (TDSP) to clearly define business goals and success criteria
-- Use a code-repository system with the Azure Machine Learning Workbench using the TDSP structure
-- Create an example environment
-- Use the TDSP and AMLS for data acquisition and understanding
-- Use the TDSP and AMLS for creating an experiment with a model and evaluation of models
-- Use the TDSP and AMLS for deployment
-- Use the TDSP and AMLS for project close-out and customer acceptance
-- Execute Data preparation workflows and train your models on remote Data Science Virtual Machines (with or without GPUs) and HDInsight Clusters running Spark
-- Manage and compare models with Azure Machine Learning
-- Explore hyper-parameters on Spark using Azure Machine Learning
-- Deploy and Consume a scoring service on Azure Container Service
-- Collect and Analyze data from a scoring service in production to progress the data science lifecycle.
+#### Lab verification
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Enter the following commands to ensure you have several Notebook files:</p> 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/aml-logo.png">Agenda:</p>
+`cd ~/gpu/notebooks`
 
-Please note: This is a rough agenda, and the schedule is subject to change pending class activities and interaction.
+`ls *.ipynb`
 
-1.	Data Acquisition and exploration:
-  a.	Accessing data from different data sources (like Blobs, Azure File Shares, SQL DB/DW, CosmosDB, Spark, Data Lake, to/from local machine) from the DSVM
-  b.	Data exploration and pre-processing using Python, PySpark, R
-2.	Modeling:
-  a.	Building Deep learning models locally on the GPU instances of DSVM, scaling out training on BatchAI
-  b.	Building Spark MLLib/MMLSpark locally for development, scaling out on aztk (and possibly Databricks that is the focus going forward compared to HDI). 
-3.	Deploying models:
-  a.	AzureML Container/Kubernetes  based deployment (Realtime now, Batch coming soon) – Maybe a pointer to existing AzureML material 
-  b.	Deploying DL/Spark models for batch scoring on aztk/BatchAI/Databricks
-  c.	Deploying models on Tensorflow Serving
-  d.	Other ways to deploy models – Natively on DSVM (for small data) using Flask etc, Azure Functions, App Services
-  e.	Future ONNX Model export and deployment (TBD)
-4.	Enterprise features: (We recently worked on this in the DSVM team and planning to some documentation/scripts in a couple of weeks)
-  a.	Single Signon with Active Directory domain join
-  b.	VM Scale Sets for scaling team’s DSVM Pool 
-  c.	Using Managed Service identity (MSI) for access to resources without embedding credentials
-  d.	Security : Controlling access to data sets
+<p style="border-bottom: 3px solid lightgrey;"></p>
 
+### Lab 0.5 - Start the Jupyter Notebook Server and Open the Workshop Notebooks
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/aml-logo.png">Discussion Forum:</p>
-TODO
+1. You're now ready to continue on to the introduction Jupyter Notebook. Connect to it on your local brwoser using the following URL, replacing the IP Address with the IP Address (or DNS name) of your Linux DSVM, which you can find in the Azure Portal: 
 
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/aml-logo.png">Software Dependencies:</p>
+`https://192.168.0.1:8000`
 
-These materials have been tested on Windows with:
+You may get a security warning, since your DSVM is not set up with a signed certificate, but as long as you verify you are connecting to your DSVM's address, you may continue to your site. 
 
-- DSVM version?
-- AML deployment version? if using?
+**NOTE: Continuing to a system that is not yours by bypassing the browser's security warning is highly dangerous, and you should exit that screen immediately if the IP address is not correct. Carefully verify that you are accessing the correct site!**
 
-[prereq3.0]: https://aka.ms/learnai-proaidevbootcamp-03-0
-[lab3.1]: https://aka.ms/learnai-proaidevbootcamp-03-1
-[lab3.2]: https://aka.ms/learnai-proaidevbootcamp-03-2
-[lab3.3]: https://aka.ms/learnai-proaidevbootcamp-03-3
-[lab3.4]: https://aka.ms/learnai-proaidevbootcamp-03-4
-[lab3.5]: lab03.5-execute_remote_gpu/0_README.md
-[lab4.1]: https://aka.ms/learnai-proaidevbootcamp-04-1
-[lab4.2]: https://aka.ms/learnai-proaidevbootcamp-04-2
-[lab4.3]: https://aka.ms/learnai-proaidevbootcamp-04-3
-[lab4.4]: https://aka.ms/learnai-proaidevbootcamp-04-4
-[lab4.5]: https://aka.ms/learnai-proaidevbootcamp-04-5
-[gitter]: https://gitter.im/LearnAI-Bootcamps
+2. Click the `Start My Server` button.
+
+*(If prompted, log in with the name and password you set for your Linux DSVM)*
+
+3. Navigate to the `gpu/notebooks` folder and open the `0 - Introduction.ipynb` Jupyter Notebook. Continue the workshop from there. 
