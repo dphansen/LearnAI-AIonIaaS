@@ -76,8 +76,6 @@ Instructions:
 
 <img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
 
-< TODO: Change to Linux >
-
 Instructions:
 1. On your local system, open CMD on Windows or a Terminal Window on Linux. 
 2. Type the following commands:
@@ -91,21 +89,66 @@ Instructions:
 Allow the process to complete.
 
 #### Lab verification
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Restart your DSVM and log in.</p> 
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Commands complete successfully.</p> 
  
 <p style="border-bottom: 3px solid lightgrey;"></p>
 
-### Lab 0.3 - Create a Workspace
-
-< TODO: Change to Linux >
+### Lab 0.3 - Create a Model Management Account
 
 <img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
 
 Instructions:
-1.  [Open this reference and follow the steps you see there, stopping at the section marked "Create a project in Workbench"](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation) 
+1.  On your DSVM terminal connection, type the following commands:
+
+`az login`
+
+2. You will be given instructions for a web page and code to authorize the connection. Perform those actions. You will be given a login panel, use the Azure Account you started with for this Workshop.
+
+3. Next, create an Azure Resource Group to hold all of the assets for this workshop with the following commands, entering the same region (which you can find in the Azure Portal) where you created your DSVM:
+ 
+`az group create --name gpurg --location <ACCOUNT_REGION>`
+
+*Note: You can find the correct text for the `<ACCOUNT_REGION>` using the command:*
+
+`az account list-locations`
+
+4. Now create a Model Management service in your Microsoft Azure account, called `gpumodelmanagement`. (You only need to do this once for any models you would like to deploy.) You will need to supply an **ACCOUNT_REGION** as before from your Azure account. The remaining defaults are acceptable. Run the following code:
+
+`az ml account modelmanagement create --location <ACCOUNT_REGION> --resource-group gpurg --name gpumodelmanagement`
+
+*Note: If you get an error involving the region, read the error message carefully and select a region that is listed.*
+
+*Note: If you get a `ResourceGroupNotFound` error, you may need to set the correct subscription. This is typically only an issue if your Azure login connects to multiple subscritpions.*
+
+`az account set -s '<subscription name>'`
+
+You can find the `subscription name` or `subscription id` through the (https://portal.azure.com) under the resource group you'd like to use. 
+
 
 #### Lab verification
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Open the Azure Machine Learning Workbench and connect to your Workspace.</p> 
+<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Complete the steps that follow:</p>
+
+1. Show the currently active environment:
+
+`az ml env show`
+
+2. You should get a message that the compute environment is not set. If so, activate the environment with your model management context (created above): 
+
+`az ml env setup --location <ACCOUNT_REGION> --resource-group gpurg --name gpumodelmanagement`
+
+...using the same `<ACCOUNT_REGION>` and `<RESOURCE_GROUP>` from the previous section. It will take a few minutes for this to complete. You can check the status with the command:
+
+`az ml env show` 
+
+3. Then set the current environment:
+
+`az ml env set --resource-group gpurg --cluster-name gpumodelmanagement`
+
+*Note: if you get an error that it is not complete, wait a few minutes and re-run the command.*
+
+3.  When that command completes successfully, check that the environment is now set:
+
+`az ml env show` 
  
 <p style="border-bottom: 3px solid lightgrey;"></p>
 
@@ -116,11 +159,11 @@ Instructions:
 <img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
 
 Instructions:
-1.   Log in to your Data Science Virtual Machine with the following command from your local workstation, using CMD, PuTTY or a bash-shell prompt:
+1.   Log in to your Data Science Virtual Machine with the following command from your local workstation, using CMD or a bash-shell prompt:
 
-`thing`
+`ssh nameyoupicked@ipaddressofyourdsvm`
 
-2. Make a directory for the Workshop with the following command:
+2. Log in to the system. Now make a directory for the Workshop with the following command:
 
 `mkdir ~/gpu`
 
@@ -130,7 +173,7 @@ Instructions:
 
 4. Clone the repository using git commands:
 
-`git clone http://`
+`git clone https://msdata.visualstudio.com/DefaultCollection/AlgorithmsAndDataScience/_git/LearnAI-IaaSPaaSforAI`
 
 
 #### Lab verification
@@ -152,8 +195,6 @@ You may get a security warning, since your DSVM is not set up with a signed cert
 
 **NOTE: Continuing to a system that is not yours by bypassing the browser's security warning is highly dangerous, and you should exit that screen immediately if the IP address is not correct. Carefully verify that you are accessing the correct site!**
 
-2. Click the `Start My Server` button.
-
-*(If prompted, log in with the name and password you set for your Linux DSVM)*
-
-3. Navigate to the `gpu/notebooks` folder and open the `0 - Introduction.ipynb` Jupyter Notebook. Continue the workshop from there. 
+2. If prompted, Click the `Start My Server` button.
+3. If prompted, log in with the name and password you set for your Linux DSVM
+3. Navigate to the `gpu/notebooks/TODO:` folder and open the `0 - Introduction.ipynb` Jupyter Notebook. Continue the workshop from there. 
