@@ -5,20 +5,20 @@
 
   -  Useful
   -  High Production Value
-  -  Deep Learning with GPU (Keras often just knows, package dependency for TensorFlow - Check)
-  -  Scale-out
+  -  Deep Learning with GPU (*Package dependency for TensorFlow?*)
+  -  Scale-out (*Batch AI*)
+  -  Use IaaS DSVM for everything except Model Management/Scale Out
   -  Deploy to IoT
   -  Supporting material can be found here: https://gallery.azure.ai/Collection/Predictive-Maintenance-Template-3 
   
 **TODO:**
   - Convert lab notebooks to these notebooks *(complete)*
   - Change readme.md file to have the pre-reqs *(complete, now testing)*
-  - Convert experiment to Linux DSVM
+  - Convert experiment to Linux DSVM *(In Process)*
   - Convert tensorflow code to GPU-enabled
   - Include IoT as target
   - Deploy and test
-  - Find/create location for data source files
-  - Edit/check pre-reqs and setup - attribute the original
+  - Edit/check pre-reqs and setup - attribute the original *(complete, pending check)*
   - If the "Answer Key" is needed, make it, if not, remove reference in the first notebook.
   - Clean up files and directories for consistency, layout, person, and tense
 
@@ -79,6 +79,7 @@ Instructions:
 Instructions:
 1. On your local system, open CMD on Windows or a Terminal Window on Linux. 
 2. Type the following commands:
+`ssh <Login Name You Created>@<IP Address of your DSVM>`
 
 `sudo apt-get update`
 
@@ -93,108 +94,39 @@ Allow the process to complete.
  
 <p style="border-bottom: 3px solid lightgrey;"></p>
 
-### Lab 0.3 - Create a Model Management Account
+
+### Lab 0.3 - Clone the Workshop's Jupyter Notebooks
 
 <img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
 
 Instructions:
-1.  On your DSVM terminal connection, type the following commands:
+1. Log in to the DSVM, and change to the notebooks directory with the following command:
 
-`az login`
+`cd ~/notebooks`
 
-2. You will be given instructions for a web page and code to authorize the connection. Perform those actions. You will be given a login panel, use the Azure Account you started with for this Workshop.
+2. Clone the repository using git commands:
 
-3. Next, create an Azure Resource Group to hold all of the assets for this workshop with the following commands, entering the same region (which you can find in the Azure Portal) where you created your DSVM:
- 
-`az group create --name gpurg --location <ACCOUNT_REGION>`
-
-*Note: You can find the correct text for the `<ACCOUNT_REGION>` using the command:*
-
-`az account list-locations`
-
-4. Now create a Model Management service in your Microsoft Azure account, called `gpumodelmanagement`. (You only need to do this once for any models you would like to deploy.) You will need to supply an **ACCOUNT_REGION** as before from your Azure account. The remaining defaults are acceptable. Run the following code:
-
-`az ml account modelmanagement create --location <ACCOUNT_REGION> --resource-group gpurg --name gpumodelmanagement`
-
-*Note: If you get an error involving the region, read the error message carefully and select a region that is listed.*
-
-*Note: If you get a `ResourceGroupNotFound` error, you may need to set the correct subscription. This is typically only an issue if your Azure login connects to multiple subscritpions.*
-
-`az account set -s '<subscription name>'`
-
-You can find the `subscription name` or `subscription id` through the (https://portal.azure.com) under the resource group you'd like to use. 
-
-
-#### Lab verification
-<p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Complete the steps that follow:</p>
-
-1. Show the currently active environment:
-
-`az ml env show`
-
-2. You should get a message that the compute environment is not set. If so, activate the environment with your model management context (created above): 
-
-`az ml env setup --location <ACCOUNT_REGION> --resource-group gpurg --name gpumodelmanagement`
-
-...using the same `<ACCOUNT_REGION>` and `<RESOURCE_GROUP>` from the previous section. It will take a few minutes for this to complete. You can check the status with the command:
-
-`az ml env show` 
-
-3. Then set the current environment:
-
-`az ml env set --resource-group gpurg --cluster-name gpumodelmanagement`
-
-*Note: if you get an error that it is not complete, wait a few minutes and re-run the command.*
-
-3.  When that command completes successfully, check that the environment is now set:
-
-`az ml env show` 
- 
-<p style="border-bottom: 3px solid lightgrey;"></p>
-
-### Lab 0.4 - Clone the Workshop's Jupyter Notebooks
-
-< TODO: Change to Linux >
-
-<img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
-
-Instructions:
-1.   Log in to your Data Science Virtual Machine with the following command from your local workstation, using CMD or a bash-shell prompt:
-
-`ssh nameyoupicked@ipaddressofyourdsvm`
-
-2. Log in to the system. Now make a directory for the Workshop with the following command:
-
-`mkdir ~/gpu`
-
-3. Change to that directory with the following command:
-
-`cd ~/gpu`
-
-4. Clone the repository using git commands:
-
-`git clone https://msdata.visualstudio.com/DefaultCollection/AlgorithmsAndDataScience/_git/LearnAI-IaaSPaaSforAI`
-
+`git clone -b bwoody-coursealpha https://msdata.visualstudio.com/DefaultCollection/AlgorithmsAndDataScience/_git/LearnAI-IaaSPaaSforAI`
 
 #### Lab verification
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Enter the following commands to ensure you have several Notebook files:</p> 
 
-`cd ~/gpu/notebooks`
+`cd ~/notebooks/LearnAI-IaaSPaaSforAI/notebooks`
 
 `ls *.ipynb`
 
 <p style="border-bottom: 3px solid lightgrey;"></p>
 
-### Lab 0.5 - Start the Jupyter Notebook Server and Open the Workshop Notebooks
+### Lab 0.4 - Start the Jupyter Notebook Server and Open the Workshop Notebooks
 
 1. You're now ready to continue on to the introduction Jupyter Notebook. Connect to it on your local brwoser using the following URL, replacing the IP Address with the IP Address (or DNS name) of your Linux DSVM, which you can find in the Azure Portal: 
 
-`https://192.168.0.1:8000`
+`https://<IP Address of your DSVM>:8000`
 
 You may get a security warning, since your DSVM is not set up with a signed certificate, but as long as you verify you are connecting to your DSVM's address, you may continue to your site. 
 
 **NOTE: Continuing to a system that is not yours by bypassing the browser's security warning is highly dangerous, and you should exit that screen immediately if the IP address is not correct. Carefully verify that you are accessing the correct site!**
 
-2. If prompted, Click the `Start My Server` button.
-3. If prompted, log in with the name and password you set for your Linux DSVM
-3. Navigate to the `gpu/notebooks/TODO:` folder and open the `0 - Introduction.ipynb` Jupyter Notebook. Continue the workshop from there. 
+2. If prompted, log in with the name and password you set for your Linux DSVM
+3. If prompted, click the `Start My Server` button.
+4. Navigate to the `~/notebooks/LearnAI-IaaSPaaSforAI/notebooks` folder and open the `0 - Introduction.ipynb` Jupyter Notebook. Continue the workshop from there. 
