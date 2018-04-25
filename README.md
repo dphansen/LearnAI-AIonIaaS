@@ -16,10 +16,10 @@
   - Change readme.md file to have the pre-reqs *(complete, now testing)*
   - Convert experiment to Linux DSVM *(In Process)*
   - Convert tensorflow code to GPU-enabled
-  - Include IoT as target
+  - Include IoT as target (*Process Discovered*)
   - Deploy and test
-  - Edit/check pre-reqs and setup - attribute the original *(complete, pending check)*
-  - If the "Answer Key" is needed, make it, if not, remove reference in the first notebook.
+  - Edit/check pre-reqs and setup - attribute the original *(complete, pending check, reworking as new items discovered)*
+  - If the "Answer Key" is needed, make it, if not, remove reference in the first notebook. (*Will not be needed*)
   - Clean up files and directories for consistency, layout, person, and tense
 
 ## Artificial Intelligence on IaaS++
@@ -28,7 +28,7 @@
 
 This workshop leads you through a series of [Jupyter Notebooks](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html) that explain how to use the Microsoft Azure Data Science Virtual Machine (DSVM) and the Team Data Science Process (TDSP) to create Data Science and AI solutions. These solutions can be deployed in a variety of ways, leveraging Infrastructure-as-a-Service (IaaS) through Platform-as-a-Service (PaaS) environments, and a mixture of both based on requirements. 
 
-The material for this workshop is intended for a Data Scientist familiar with Machine Learning, Python and R programming, Artificial Intelligence application development, and a professional backgound in team software development with methodologies such as Agile. [If any of these topics are new to you, we have a learning path here that you can follow to bring you up to speed before you start this workshop](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
+The material for this workshop is intended for a Data Scientist familiar with Machine Learning, Python programming, Artificial Intelligence application development, and a professional backgound in team software development with methodologies such as Agile. [If any of these topics are new to you, we have a learning path here that you can follow to bring you up to speed before you start this workshop](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
 *This material draws from a [previous example](https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance), which draws from [yet another example](https://gallery.azure.ai/Collection/Predictive-Maintenance-Template-3).* 
     
@@ -72,41 +72,67 @@ Instructions:
 
 <p style="border-bottom: 3px solid lightgrey;"></p>
 
-### Lab 0.2 - Log in to the DSVM and Update the System
+### Lab 0.2 - Log in to the DSVM, Explore and Update the System
 
 <img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
+
+Whenever you install a new system, it's a good idea to check the environment to ascertain it's configuration. In Linux, the following commands are useful:
 
 Instructions:
 1. On your local system, open CMD on Windows or a Terminal Window on Linux. 
 2. Type the following commands:
 `ssh <Login Name You Created>@<IP Address of your DSVM>`
 
+First, start with the release information of the Operating System:
+
+`lsb_release -a`
+
+Next, examine the hardware: 
+
+`hwinfo -short`
+
+And let's check the drive space:
+
+`df -H`
+
+We notice that the home mount point (/data) doesn't have a lot of room. We'll fix that in a bit.
+
+Finally, let's update the system:
+
 `sudo apt-get update`
 
-(You will be prompted for the password you set in the Portal when you created the VM)
+*(You may be prompted for the password you set in the Portal when you created the VM)*
 
 `sudo apt-get upgrade`
-
-Allow the process to complete.
 
 #### Lab verification
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Commands complete successfully.</p> 
  
 <p style="border-bottom: 3px solid lightgrey;"></p>
 
-
 ### Lab 0.3 - Clone the Workshop's Jupyter Notebooks
 
 <img src="notebooks/assets/checkmark.jpg" style="float:right;vertical-align:text-top">
 
+
 Instructions:
-1. Log in to the DSVM, and change to the notebooks directory with the following command:
+1. We'll need more space for the labs, since /data doesn't have enough to do what we need to do. Log in to the DSVM, and clone the course with the following command:
 
-`cd ~/notebooks`
+`sudo mkdir /gpuclass`
 
-2. Clone the repository using git commands:
+2. Then grant access to it for everyone (in production, you would limit the access to only certain groups, and determine for each file whether they need read/write/execute):
 
-`git clone -b bwoody-coursealpha https://msdata.visualstudio.com/DefaultCollection/AlgorithmsAndDataScience/_git/LearnAI-IaaSPaaSforAI`
+`sudo chmod -R 0777 /gpuclass`
+
+3. Now clone the course with the following command:
+
+`git clone -b bwoody-coursealpha https://msdata.visualstudio.com/DefaultCollection/AlgorithmsAndDataScience/_git/LearnAI-IaaSPaaSforAI /gpuclass`
+
+4. And link to it with the following command:
+
+`ln -s ~/notebooks/gpuclass /gpuclass`
+
+We should now be able to see the course materials when we access the notebook server. 
 
 #### Lab verification
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Enter the following commands to ensure you have several Notebook files:</p> 
