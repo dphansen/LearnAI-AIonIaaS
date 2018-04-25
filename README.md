@@ -81,15 +81,12 @@ Whenever you install a new system, it's a good idea to check the environment to 
 Instructions:
 1. On your local system, open CMD on Windows or a Terminal Window on Linux. 
 2. Type the following commands:
+
 `ssh <Login Name You Created>@<IP Address of your DSVM>`
 
 First, start with the release information of the Operating System:
 
 `lsb_release -a`
-
-Next, examine the hardware: 
-
-`hwinfo -short`
 
 And let's check the drive space:
 
@@ -120,7 +117,7 @@ Instructions:
 
 `sudo mkdir /gpuclass`
 
-2. Then grant access to it for everyone (in production, you would limit the access to only certain groups, and determine for each file whether they need read/write/execute):
+2. Then grant access to it for everyone *(Security Note: in production, you would limit the access to only certain groups, and determine for each file whether they need read/write/execute)*:
 
 `sudo chmod -R 0777 /gpuclass`
 
@@ -130,14 +127,14 @@ Instructions:
 
 4. And link to it with the following command:
 
-`ln -s ~/notebooks/gpuclass /gpuclass`
+`ln -s /gpuclass ~/notebooks/gpuclass` 
 
 We should now be able to see the course materials when we access the notebook server. 
 
 #### Lab verification
 <p><img style="float: left; margin: 0px 15px 15px 0px;" src="./assets/checkbox.png">Enter the following commands to ensure you have several Notebook files:</p> 
 
-`cd ~/notebooks/LearnAI-IaaSPaaSforAI/notebooks`
+`cd ~/notebooks/gpuclass/notebooks`
 
 `ls *.ipynb`
 
@@ -155,4 +152,4 @@ You may get a security warning, since your DSVM is not set up with a signed cert
 
 2. If prompted, log in with the name and password you set for your Linux DSVM
 3. If prompted, click the `Start My Server` button.
-4. Navigate to the `~/notebooks/LearnAI-IaaSPaaSforAI/notebooks` folder and open the `0 - Introduction.ipynb` Jupyter Notebook. Continue the workshop from there. 
+4. Navigate to the `~/notebooks/gpuclass/notebooks` folder and open the `0 - Introduction.ipynb` Jupyter Notebook. Continue the workshop from there. 
