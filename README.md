@@ -1,27 +1,6 @@
 ![](notebooks/assets/solutions-microsoft-logo-small.png)
 <img src="notebooks/assets/ai.jpg" style="height:200px;float:right;vertical-align:text-top">
 
-**Course Design Notes - remove after course Charlie-Lock:**
-
-  -  Useful
-  -  High Production Value
-  -  Deep Learning with GPU (*Package dependency for TensorFlow?*)
-  -  Scale-out (*Batch AI*)
-  -  Use IaaS DSVM for everything except Model Management/Scale Out
-  -  Deploy to IoT
-  -  Supporting material can be found here: https://gallery.azure.ai/Collection/Predictive-Maintenance-Template-3 
-  
-**TODO:**
-  - Convert lab notebooks to these notebooks *(complete)*
-  - Change readme.md file to have the pre-reqs *(complete, now testing)*
-  - Convert experiment to Linux DSVM *(In Process)*
-  - Convert tensorflow code to GPU-enabled
-  - Include IoT as target (*Process Discovered*)
-  - Deploy and test
-  - Edit/check pre-reqs and setup - attribute the original *(complete, pending check, reworking as new items discovered)*
-  - If the "Answer Key" is needed, make it, if not, remove reference in the first notebook. (*Will not be needed*)
-  - Clean up files and directories for consistency, layout, person, and tense
-
 ## Artificial Intelligence on IaaS++
 
 #### From the Microsoft Cloud and AI Team
