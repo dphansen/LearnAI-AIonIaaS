@@ -102,7 +102,7 @@ Instructions:
 
 3. Now clone the course with the following command:
 
-`git clone -b bwoody-coursealpha https://msdata.visualstudio.com/DefaultCollection/AlgorithmsAndDataScience/_git/LearnAI-IaaSPaaSforAI /gpuclass`
+`git clone https://github.com/Azure/LearnAI-AIonIaaS`
 
 4. And link to it with the following command:
 
