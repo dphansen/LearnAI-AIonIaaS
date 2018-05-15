@@ -121,7 +121,7 @@ We should now be able to see the course materials when we access the notebook se
 
 ### Lab 0.4 - Start the Jupyter Notebook Server and Open the Workshop Notebooks
 
-1. You're now ready to continue on to the introduction Jupyter Notebook. Connect to it on your local brwoser using the following URL, replacing the IP Address with the IP Address (or DNS name) of your Linux DSVM, which you can find in the Azure Portal: 
+1. You're now ready to continue on to the introduction Jupyter Notebook. Connect to it on your local browser using the following URL, replacing the IP Address with the IP Address (or DNS name) of your Linux DSVM, which you can find in the Azure Portal: 
 
 `https://<IP Address of your DSVM>:8000`
 
