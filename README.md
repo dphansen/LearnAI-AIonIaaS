@@ -102,7 +102,7 @@ Instructions:
 
 3. Now clone the course with the following command:
 
-`git clone https://github.com/Azure/LearnAI-AIonIaaS`
+`git clone https://github.com/Azure/LearnAI-AIonIaaS /gpuclass`
 
 4. And link to it with the following command:
 
